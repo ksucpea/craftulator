@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <link rel='shortcut icon' type='image/x-icon' href='favicon.ico' />
+        <title>Crafting Calculator</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Minecraft crafting calculator">
+    </head>
+    <body>
+        <div class="main">
+            <div class="upper-main">
+                <div class="selectfield">
+                    <div><span style="color: #3F3F3F">I want to make: </span><input type="text" name="numero" id="numero" placeholder="#"></div>
+                    <div style="position: relative; display: flex; align-items: center;">
+                        <input type="checkbox" id="stacks" name="stacks" value="yes"><label for="stacks" class="stacking">Stacks</label>
+                        <div class="stackhidden">changes the amount to stacks of 64</div>
+                    </div>
+                    <div class="blocksearcher">
+                        <input type="text" placeholder="search for block" id="blocksearch" onkeyup="filterBlocks()">
+                        <form id="blocktype" class="closed">
+                            <input class="block" id="compass" type="radio" name="block" value="compass">
+                            <label class="block" for="compass">Compass</label>
+                            <input class="block" id="map" type="radio" name="block" value="map">
+                            <label class="block" for="map">Map</label>
+                            <input class="block" id="composter" type="radio" name="block" value="composter">
+                            <label class="block" for="composter">Composter</label>
+                            <input class="block" id="tripwire_hook" type="radio" name="block" value="tripwire_hook">
+                            <label class="block" for="tripwire_hook">Tripwire Hook</label>
+                            <input class="block" id="crossbow" type="radio" name="block" value="crossbow">
+                            <label class="block" for="crossbow">Crossbow</label>
+                            <input class="block" id="anvil" type="radio" name="block" value="anvil">
+                            <label class="block" for="anvil">Anvil</label>
+                            <input class="block" id="arrow" type="radio" name="block" value="arrow">
+                            <label class="block" for="arrow">Arrow</label>
+                            <input class="block" id="minecart_with_furnace" type="radio" name="block" value="minecart_with_furnace">
+                            <label class="block" for="minecart_with_furnace">Minecart With Furnace</label>
+                            <input class="block" id="glass_pane" type="radio" name="block" value="glass_pane">
+                            <label class="block" for="glass_pane">Glass Pane</label>    
+                            <input class="block" id="wood_fence" type="radio" name="block" value="wood_fence">
+                            <label class="block" for="wood_fence">Wood Fence</label>
+                            <input class="block" id="wood_fence_gate" type="radio" name="block" value="wood_fence_gate">
+                            <label class="block" for="wood_fence_gate">Wood Fence Gate</label>
+                            <input class="block" id="observer" type="radio" name="block" value="observer">
+                            <label class="block" for="observer">Observer</label>
+                            <input class="block" id="bone_meal" type="radio" name="block" value="bone_meal">
+                            <label class="block" for="bone_meal">Bone Meal</label>
+                            <input class="block" id="white_dye" type="radio" name="block" value="white_dye">
+                            <label class="block" for="white_dye">White Dye</label>
+                            <input class="block" id="red_dye" type="radio" name="block" value="red_dye">
+                            <label class="block" for="red_dye">Red Dye</label>
+                            <input class="block" id="yellow_dye" type="radio" name="block" value="yellow_dye">
+                            <label class="block" for="yellow_dye">Yellow Dye</label>
+                            <input class="block" id="orange_dye" type="radio" name="block" value="orange_dye">
+                            <label class="block" for="orange_dye">Orange Dye</label>
+                            <input class="block" id="light_gray_dye" type="radio" name="block" value="light_gray_dye">
+                            <label class="block" for="light_gray_dye">Light Gray Dye</label>
+                            <input class="block" id="gray_dye" type="radio" name="block" value="gray_dye">
+                            <label class="block" for="gray_dye">Gray Dye</label>
+                            <input class="block" id="green_dye" type="radio" name="block" value="green_dye">
+                            <label class="block" for="green_dye">Green Dye</label>
+                            <input class="block" id="lime_dye" type="radio" name="block" value="lime_dye">
+                            <label class="block" for="lime_dye">Lime Dye</label>
+                            <input class="block" id="blue_dye" type="radio" name="block" value="blue_dye">
+                            <label class="block" for="blue_dye">Blue Dye</label>
+                            <input class="block" id="light_blue_dye" type="radio" name="block" value="light_blue_dye">
+                            <label class="block" for="light_blue_dye">Light Blue Dye</label>
+                            <input class="block" id="cyan_dye" type="radio" name="block" value="cyan_dye">
+                            <label class="block" for="cyan_dye">Cyan Dye</label>
+                            <input class="block" id="purple_dye" type="radio" name="block" value="purple_dye">
+                            <label class="block" for="purple_dye">Purple Dye</label>
+                            <input class="block" id="brown_dye" type="radio" name="block" value="brown_dye">
+                            <label class="block" for="brown_dye">Brown Dye</label>
+                            <input class="block" id="magenta_dye" type="radio" name="block" value="magenta_dye">
+                            <label class="block" for="magenta_dye">Magenta Dye</label>
+                            <input class="block" id="pink_dye" type="radio" name="block" value="pink_dye">
+                            <label class="block" for="pink_dye">Pink Dye</label>
+                            <input class="block" id="blue_concrete_powder" type="radio" name="block" value="concrete_powder">
+                            <label class="block" for="blue_concrete_powder">Blue Concrete Powder</label>
+                            <input class="block" id="white_concrete_powder" type="radio" name="block" value="concrete_powder">
+                            <label class="block" for="white_concrete_powder">White Concrete Powder</label>
+                            <input class="block" id="pink_concrete_powder" type="radio" name="block" value="concrete_powder">
+                            <label class="block" for="pink_concrete_powder">Pink Concrete Powder</label>
+                            <input class="block" id="light_blue_concrete_powder" type="radio" name="block" value="concrete_powder">
+                            <label class="block" for="light_blue_concrete_powder">Light Blue Concrete Powder</label>
+                            <input class="block" id="lime_concrete_powder" type="radio" name="block" value="concrete_powder">
+                            <label class="block" for="lime_concrete_powder">Lime Concrete Powder</label>
+                            <input class="block" id="brown_concrete_powder" type="radio" name="block" value="concrete_powder">
+                            <label class="block" for="brown_concrete_powder">Brown Concrete Powder</label>
+                            <input class="block" id="purple_concrete_powder" type="radio" name="block" value="concrete_powder">
+                            <label class="block" for="purple_concrete_powder">Purple Concrete Powder</label>
+                            <input class="block" id="cyan_concrete_powder" type="radio" name="block" value="concrete_powder">
+                            <label class="block" for="cyan_concrete_powder">Cyan Concrete Powder</label>
+                            <input class="block" id="yellow_concrete_powder" type="radio" name="block" value="concrete_powder">
+                            <label class="block" for="yellow_concrete_powder">Yellow Concrete Powder</label>
+                            <input class="block" id="orange_concrete_powder" type="radio" name="block" value="concrete_powder">
+                            <label class="block" for="orange_concrete_powder">Orange Concrete Powder</label>
+                            <input class="block" id="red_concrete_powder" type="radio" name="block" value="concrete_powder">
+                            <label class="block" for="red_concrete_powder">Red Concrete Powder</label>
+                            <input class="block" id="black_concrete_powder" type="radio" name="block" value="concrete_powder">
+                            <label class="block" for="black_concrete_powder">Black Concrete Powder</label>
+                            <input class="block" id="gray_concrete_powder" type="radio" name="block" value="concrete_powder">
+                            <label class="block" for="gray_concrete_powder">Gray Concrete Powder</label>
+                            <input class="block" id="light_gray_concrete_powder" type="radio" name="block" value="concrete_powder">
+                            <label class="block" for="light_gray_concrete_powder">Light Gray Concrete Powder</label>
+                            <input class="block" id="barrel" type="radio" name="block" value="barrel">
+                            <label class="block" for="barrel">Barrel</label>
+                            <input class="block" id="beacon" type="radio" name="block" value="beacon">
+                            <label class="block" for="beacon">Beacon</label>
+                            <input class="block" id="bed" type="radio" name="block" value="bed">
+                            <label class="block" for="bed">Bed</label>
+                            <input class="block" id="block_of_diamond" type="radio" name="block" value="block_of_diamond">
+                            <label class="block" for="block_of_diamond">Block of Diamond</label>
+                            <input class="block" id="block_of_gold" type="radio" name="block" value="block_of_gold">
+                            <label class="block" for="block_of_gold">Block of Gold</label>
+                            <input class="block" id="block_of_iron" type="radio" name="block" value="block_of_iron">
+                            <label class="block" for="block_of_iron">Block of Iron</label>
+                            <input class="block" id="boat" type="radio" name="block" value="boat">
+                            <label class="block" for="boat">Boat</label>
+                            <input class="block" id="book" type="radio" name="block" value="book">
+                            <label class="block" for="book">Book</label>
+                            <input class="block" id="bookshelf" type="radio" name="block" value="bookshelf">
+                            <label class="block" for="bookshelf">Bookshelf</label>
+                            <input class="block" id="bow" type="radio" name="block" value="bow">
+                            <label class="block" for="bow">Bow</label>
+                            <input class="block" id="brick" type="radio" name="block" value="brick">
+                            <label class="block" for="brick">Brick</label>
+                            <input class="block" id="bricks" type="radio" name="block" value="bricks">
+                            <label class="block" for="bricks">Bricks</label>
+                            <input class="block" id="chest" type="radio" name="block" value="chest">
+                            <label class="block" for="chest">Chest</label>
+                            <input class="block" id="coarse_dirt" type="radio" name="block" value="coarse_dirt">
+                            <label class="block" for="coarse_dirt">Coarse Dirt</label>
+                            <input class="block" id="cobblestone_slab" type="radio" name="block" value="cobblestone_slab">
+                            <label class="block" for="cobblestone_slab">Cobblestone Slab</label>
+                            <input class="block" id="crafting_table" type="radio" name="block" value="crafting_table">
+                            <label class="block" for="crafting_table">Crafting Table</label>
+                            <input class="block" id="detector_rail" type="radio" name="block" value="detector_rail">
+                            <label class="block" for="detector_rail">Detector Rail</label>
+                            <input class="block" id="dispenser" type="radio" name="block" value="dispenser">
+                            <label class="block" for="dispenser">Dispenser</label>
+                            <input class="block" id="enchantment_table" type="radio" name="block" value="enchantment_table">
+                            <label class="block" for="enchantment_table">Enchantment Table</label>
+                            <input class="block" id="firework_rocket" type="radio" name="block" value="firework_rocket">
+                            <label class="block" for="firework_rocket">Firework Rocket</label>
+                            <input class="block" id="furnace" type="radio" name="block" value="furnace">
+                            <label class="block" for="furnace">Furnace</label>
+                            <input class="block" id="glass" type="radio" name="block" value="glass">
+                            <label class="block" for="glass">Glass</label>
+                            <input class="block" id="gold_ingot" type="radio" name="block" value="gold_ingot">
+                            <label class="block" for="gold_ingot">Gold Ingot</label>
+                            <input class="block" id="hopper" type="radio" name="block" value="hopper">
+                            <label class="block" for="hopper">Hopper</label>
+                            <input class="block" id="iron_ingot" type="radio" name="block" value="iron_ingot">
+                            <label class="block" for="iron_ingot">Iron Ingot</label>
+                            <input class="block" id="ladder" type="radio" name="block" value="ladder">
+                            <label class="block" for="ladder">Ladder</label>
+                            <input class="block" id="lead" type="radio" name="block" value="lead">
+                            <label class="block" for="lead">Lead</label>
+                            <input class="block" id="lever" type="radio" name="block" value="lever">
+                            <label class="block" for="lever">Lever</label>
+                            <input class="block" id="minecart" type="radio" name="block" value="minecart">
+                            <label class="block" for="minecart">Minecart</label>
+                            <input class="block" id="minecart_with_chest" type="radio" name="block" value="minecart_with_chest">
+                            <label class="block" for="minecart_with_chest">Minecart With Chest</label>
+                            <input class="block" id="minecart_with_hopper" type="radio" name="block" value="minecart_with_hopper">
+                            <label class="block" for="minecart_with_hopper">Minecart With Hopper</label>
+                            <input class="block" id="noteblock" type="radio" name="block" value="noteblock">
+                            <label class="block" for="noteblock">Noteblock</label>
+                            <input class="block" id="paper" type="radio" name="block" value="paper">
+                            <label class="block" for="paper">Paper</label>
+                            <input class="block" id="piston" type="radio" name="block" value="piston">
+                            <label class="block" for="piston">Piston</label>
+                            <input class="block" id="powered_rail" type="radio" name="block" value="powered_rail">
+                            <label class="block" for="powered_rail">Powered Rail</label>
+                            <input class="block" id="rail" type="radio" name="block" value="rail">
+                            <label class="block" for="rail">Rail</label>
+                            <input class="block" id="redstone_comparator" type="radio" name="block" value="redstone_comparator">
+                            <label class="block" for="redstone_comparator">Redstone Comparator</label>
+                            <input class="block" id="redstone_lamp" type="radio" name="block" value="redstone_lamp">
+                            <label class="block" for="redstone_lamp">Redstone Lamp</label>
+                            <input class="block" id="redstone_repeater" type="radio" name="block" value="redstone_repeater">
+                            <label class="block" for="redstone_repeater">Redstone Repeater</label>
+                            <input class="block" id="redstone_torch" type="radio" name="block" value="redstone_torch">
+                            <label class="block" for="redstone_torch">Redstone Torch</label>
+                            <input class="block" id="sandstone" type="radio" name="block" value="sandstone">
+                            <label class="block" for="sandstone">Sandstone</label>
+                            <input class="block" id="sandstone_slab" type="radio" name="block" value="sandstone_slab">
+                            <label class="block" for="sandstone_slab">Sandstone Slab</label>
+                            <input class="block" id="shield" type="radio" name="block" value="shield">
+                            <label class="block" for="shield">Shield</label>
+                            <input class="block" id="sign" type="radio" name="block" value="sign">
+                            <label class="block" for="sign">Sign</label>
+                            <input class="block" id="stick" type="radio" name="block" value="stick">
+                            <label class="block" for="stick">Stick</label>
+                            <input class="block" id="sticky_piston" type="radio" name="block" value="sticky_piston">
+                            <label class="block" for="sticky_piston">Sticky Piston</label>
+                            <input class="block" id="stone" type="radio" name="block" value="stone">
+                            <label class="block" for="stone">Stone</label>
+                            <input class="block" id="stone_slab" type="radio" name="block" value="stone_slab">
+                            <label class="block" for="stone_slab">Stone Slab</label>
+                            <input class="block" id="tnt" type="radio" name="block" value="tnt">
+                            <label class="block" for="tnt">TNT</label>
+                            <input class="block" id="torch" type="radio" name="block" value="torch">
+                            <label class="block" for="torch">Torch</label>
+                            <input class="block" id="wood_plank" type="radio" name="block" value="wood_plank">
+                            <label class="block" for="wood_plank">Wood Plank</label>
+                            <input class="block" id="wood_slab" type="radio" name="block" value="wood_slab">
+                            <label class="block" for="wood_slab">Wood Slab</label>
+                            <input class="block" id="wood_stair" type="radio" name="block" value="wood_stair">
+                            <label class="block" for="wood_stair">Wood Stair</label>
+                            <input class="block" id="iron_nugget" type="radio" name="block" value="iron_nugget">
+                            <label class="block" for="iron_nugget">iron_nugget</label>
+                            <input class="block" id="water_bottle" type="radio" name="block" value="water_bottle">
+                            <label class="block" for="water_bottle">water bottle</label>
+                        </form>
+                    </div>
+                    <button id="craft">Craft</button>
+                </div>
+                <div class="totals">
+                    <p>Total Raw Materials:</p>
+                </div>
+            </div>
+            <div class="steps"></div>
+        </div>
+        <script type ="text/javascript" src="main.js"></script>
+        <script type="text/javascript" src="blocks.json"></script>
+    </body>
+</html>
