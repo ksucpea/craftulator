@@ -1,4 +1,4 @@
-<h1>Craftulator<h1>
+<h1>Craftulator</h1>
 
 Minecraft crafting calculator
 
